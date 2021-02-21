@@ -56,7 +56,7 @@ function makeHtmlBoard() {
 /** findSpotForCol: given column x, return top empty y (null if filled) */
 // How does this work?
 function findSpotForCol(x) {
-  for (let i = height - 1; i > 0; i--) {
+  for (let i = height - 1; i >= 0; i--) {
     if (!board[i][x]) {
       return i;
     }
@@ -117,7 +117,7 @@ function handleClick(e) {
   }
 }
 
-/** checkForWin: check board cell-by-cell for "does a win start here?" */
+/** checkForWin: check board celboardFillel-by-cell for "does a win start here?" */
 
 function checkForWin() {
   function _win(cells) {

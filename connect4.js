@@ -100,8 +100,8 @@ function handleClick(e) {
 
   // place piece in board and add to HTML table
   // TODO: add line to update in-memory board
-  placeInTable(y, x);
   board[y][x] = currentPlayer;
+  placeInTable(y, x);
 
   // check for win
   if (checkForWin()) {
@@ -111,7 +111,7 @@ function handleClick(e) {
   // check for tie
   // TODO: check if all cells in board are filled; if so call, call endGame
 
-  const boardFilled = arr.flat(board).every((el) => el !== null);
+  const boardFilled = board.flat(Infinity).every((el) => el !== null);
   if (boardFilled) {
     return endGame(`Board full---it's a tie!`);
   }

@@ -14,13 +14,14 @@ let board = []; // array of rows, each row is array of cells  (board[y][x])
 /** makeBoard: create in-JS board structure:
  *    board = array of rows, each row is array of cells  (board[y][x])
  */
-
+// This code creates an array to represent the board based on the given height and width
 function makeBoard() {
-  // TODO: set "board" to empty height x width matrix array
-  for (let i = 0; i < width; i++) {
+  for (let i = 0; i < height; i++) {
+    // pushes number of empty arrays that equal height ( 6 in this case)
     board.push([]);
-    for (let j = 0; j < height; j++) {
+    for (let j = 0; j < width; j++) {
       board[i].push(null);
+      // this pushes a number of nulls into each array created before based on the width
     }
   }
 }

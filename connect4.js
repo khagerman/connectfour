@@ -25,11 +25,19 @@ function makeBoard() {
     }
   }
 }
+//    x
+// // [null, null, null, null, null, null, null]
+// // [null, null, null, null, null, null, null]
+// // [null, null, null, null, null, null, null]y
+// // [null, null, null, null, null, null, null]
+// // [null, null, null, null, null, null, null]
+// // [null, null, null, null, null, null, null]
+
 /** makeHtmlBoard: make HTML table and row of column tops. */
 
 function makeHtmlBoard() {
   const htmlBoard = document.querySelector("#board");
-
+  // this makes the top row of the board
   const top = document.createElement("tr");
   top.setAttribute("id", "column-top");
   top.addEventListener("click", handleClick);
@@ -106,6 +114,7 @@ function handleClick(e) {
 
   // check for win
   if (checkForWin()) {
+    clicks % 2 !== 0 ? (currentPlayer = 1) : (currentPlayer = 2);
     return endGame(`Player ${currentPlayer} won!`);
   }
 
@@ -139,8 +148,8 @@ function checkForWin() {
   // TODO: read and understand this code. Add comments to help you.
   // This code checks for winning arrays
 
-  for (let i = 0; i < height; i++) {
-    for (let j = 0; j < width; j++) {
+  for (let y = 0; y < height; y++) {
+    for (let x = 0; x < width; x++) {
       const horiz = [
         [y, x],
         [y, x + 1],

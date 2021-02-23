@@ -4,7 +4,7 @@
  * column until a player gets four-in-a-row (horiz, vert, or diag) or until
  * board fills (tie)
  */
-const td = document.querySelectorAll("td");
+
 const width = 7;
 const height = 6;
 
@@ -63,7 +63,8 @@ function makeHtmlBoard() {
 }
 
 /** findSpotForCol: given column x, return top empty y (null if filled) */
-// How does this work?
+// this code checks to see if the column x has a open y spot. If it checks the board array if
+// a spot is open starting at the bottom of the column and going up. If it is full it returns null
 function findSpotForCol(x) {
   for (let i = height - 1; i >= 0; i--) {
     if (!board[i][x]) {
@@ -94,13 +95,15 @@ function placeInTable(y, x) {
 function endGame(msg) {
   alert(msg);
 }
-
+// /resets board
+function resetGame() {
+  location.reload();
+}
 /** handleClick: handle click of column top to play piece */
-let clicks = 0;
+
 function handleClick(e) {
-  clicks++;
   const x = +e.target.id;
-  clicks % 2 !== 0 ? (currentPlayer = 1) : (currentPlayer = 2);
+
   // get next spot in column (if none, ignore click)
   const y = findSpotForCol(x);
   if (y === null) {
@@ -114,17 +117,26 @@ function handleClick(e) {
 
   // check for win
   if (checkForWin()) {
-    clicks % 2 !== 0 ? (currentPlayer = 1) : (currentPlayer = 2);
-    return endGame(`Player ${currentPlayer} won!`);
+    setTimeout(function () {
+      currentPlayer = currentPlayer === 1 ? 2 : 1;
+      endGame(`Player ${currentPlayer} won!`);
+      resetGame();
+    }, 400);
   }
-
   // check for tie
   // TODO: check if all cells in board are filled; if so call, call endGame
 
   const boardFilled = board.flat(Infinity).every((el) => el !== null);
   if (boardFilled) {
-    return endGame(`Board full---it's a tie!`);
+    setTimeout(function () {
+      return endGame(`Board full---it's a tie!`);
+      resetGame();
+    }, 400);
   }
+  // this switches between players
+  currentPlayer = currentPlayer === 1 ? 2 : 1;
+  // update who's turn it is in html
+  turn.innerText = currentPlayer;
 }
 
 /** checkForWin: check board celboardFillel-by-cell for "does a win start here?" */
@@ -146,7 +158,8 @@ function checkForWin() {
   }
 
   // TODO: read and understand this code. Add comments to help you.
-  // This code checks for winning arrays
+  // This code checks for winners by looking through the board array and seeing if there are
+  // 4 numbers aligned horizontally, vertically, and diagonally.
 
   for (let y = 0; y < height; y++) {
     for (let x = 0; x < width; x++) {
@@ -184,3 +197,4 @@ function checkForWin() {
 
 makeBoard();
 makeHtmlBoard();
+const turn = document.querySelector(".turn");

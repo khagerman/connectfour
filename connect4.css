@@ -1,7 +1,13 @@
 /* game board table */
-h1 {
+h1,
+h2,
+h3 {
   text-align: center;
   font-family: "Open Sans", sans-serif;
+}
+h2,
+h3 {
+  font-size: 1rem;
 }
 #game {
   display: flex;
@@ -15,6 +21,7 @@ h1 {
   width: 50px;
   height: 50px;
   border: solid 1px #666;
+  background-color: #fdffb6;
 }
 
 /* pieces are div within game table cells: draw as colored circles */
@@ -28,9 +35,17 @@ h1 {
 .p1 {
   background-color: red;
 }
+.red {
+  color: red;
+}
+
 .p2 {
   background-color: blue;
 }
+.blue {
+  color: blue;
+}
+
 /* TODO: make pieces red/blue,  depending on player 1/2 piece */
 
 /* column-top is table row of clickable areas for each column */
@@ -40,5 +55,5 @@ h1 {
 }
 
 #column-top td:hover {
-  background-color: rgb(255, 163, 247);
+  background-color: lavender;
 }

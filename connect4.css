@@ -5,8 +5,7 @@ h3 {
   text-align: center;
   font-family: "Open Sans", sans-serif;
 }
-h2,
-h3 {
+h2 {
   font-size: 1rem;
 }
 #game {
@@ -55,5 +54,5 @@ h3 {
 }
 
 #column-top td:hover {
-  background-color: lavender;
+  background-color: #e2eafc;
 }

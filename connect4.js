@@ -129,7 +129,7 @@ function handleClick(e) {
   const boardFilled = board.flat(Infinity).every((el) => el !== null);
   if (boardFilled) {
     setTimeout(function () {
-      return endGame(`Board full---it's a tie!`);
+      endGame(`Board full---it's a tie!`);
       resetGame();
     }, 400);
   }
@@ -157,7 +157,6 @@ function checkForWin() {
     );
   }
 
-  // TODO: read and understand this code. Add comments to help you.
   // This code checks for winners by looking through the board array and seeing if there are
   // 4 numbers aligned horizontally, vertically, and diagonally.
 
